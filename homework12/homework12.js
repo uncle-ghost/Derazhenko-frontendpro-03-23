@@ -9,3 +9,13 @@ console.log(arr.sort(compareFunc))
 arr.splice(1, 3)
 
 console.log(arr)
+
+// [
+//     1,  2,  3,  4,  7,
+//     12, 22, 25, 33, 44,
+//     100
+// ]
+// [
+//     1,  7, 12,  22,
+//     25, 33, 44, 100
+// ]
