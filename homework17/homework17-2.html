@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>homework 17-2</title>
+</head>
+<body>
+
+<script>
+    function doMath(x, znak, y) {
+        x = +prompt('Enter first number');
+        if ( isNaN(x) ) return 'Please, enter a number'
+
+        y = +prompt('Enter second number');
+        if ( isNaN(y) ) return 'Please, enter a number'
+
+        znak = prompt('Enter action: +, -, *, /, %, ^ ');
+        if (~znak.search(/[^+\-*/%^]/) || znak.length !== 1) return 'Wrong action. Try again!'
+
+        let result;
+
+        switch (znak) {
+            case '+':
+                result = x + y;
+                break;
+            case '-':
+                result = x - y;
+                break;
+            case '*':
+                result = x * y;
+                break;
+            case '/':
+                if (y === 0) return 'We cannot divide by 0!'
+                result = x / y;
+                break;
+            case '%':
+                result = x % y;
+                break;
+            case '^':
+                result = Math.pow(x,y);
+                break;
+        }
+
+        return result;
+    }
+
+    alert(doMath())
+</script>
+
+<!--<script>-->
+<!--    function doMath(x, znak, y) {-->
+<!--        if (~znak.search(/[^+\-*/%^]/) || znak.length !== 1) return 'Ошибка';-->
+<!--        return eval(x + znak.replace('^', '**') + y)-->
+<!--    }-->
+<!--    const x = prompt('Введите x');-->
+<!--    const y = prompt('Введите y');-->
+<!--    const znak = prompt('Введите знак');-->
+<!--    alert(doMath(x, znak, y))-->
+<!--</script>-->
+</body>
+</html>
