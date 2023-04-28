@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    class SuperMath {
+        check(obj) {
+            obj = {
+                x: +this.x,
+                y: +this.y,
+                znak: this.znak
+            }
+
+            if ( isNaN(obj.x) || isNaN(obj.y) || (~obj.znak.search(/[^+\-*/%^]/) || obj.znak.length !== 1) ) return alert('Wrong action. Try again!')
+
+            let question = confirm('Are you sure?')
+
+            if (question === false) {
+                alert('Let\'s start from the beginning')
+                p.input()
+            } else {
+                let result;
+
+                switch (obj.znak) {
+                    case '+':
+                        result = obj.x + obj.y;
+                        break;
+                    case '-':
+                        result = obj.x - obj.y;
+                        break;
+                    case '*':
+                        result = obj.x * obj.y;
+                        break;
+                    case '/':
+                        if (obj.y === 0) return alert('We cannot divide by 0!')
+                        result = obj.x / obj.y;
+                        break;
+                    case '%':
+                        if (obj.y === 0) return 'We cannot divide by 0!'
+                        result = obj.x % obj.y;
+                        break;
+                    case '^':
+                        result = Math.pow(obj.x, obj.y);
+                        break;
+                }
+
+                return alert(result);
+            }
+        }
+
+        input() {
+            this.x = prompt('Enter x')
+            // if ( isNaN(this.x) ) return alert('Please, enter a number')
+            this.y = prompt('Enter y')
+            // if ( isNaN(this.y) ) return alert('Please, enter a number')
+            this.znak = prompt('Enter znak')
+            // if (~this.znak.search(/[^+\-*/%^]/) || znak.length !== 1) return alert('Wrong action. Try again!')
+
+            this.check()
+
+        }
+    }
+
+    const p = new SuperMath()
+    p.input()
+
+</script>
+</body>
+</html>
