@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 28</title>
+
+    <style>
+        .wrapper {
+            display: flex;
+            gap: 20px;
+            padding: 50px;
+        }
+
+        a {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <a href="loungefm.com.ua" class="link">loungefm</a>
+    <button class="btn-http">Go with http</button>
+    <button class="btn-https">Go with https</button>
+</div>
+
+
+<script>
+
+    let link = document.querySelector('.link'),
+        btnHttp = document.querySelector('.btn-http'),
+        btnHttps = document.querySelector('.btn-https')
+
+    function changeLinkHttp(btn) {
+        btn.addEventListener('click', () => {
+            if (!link.getAttribute('href').includes('http')) {
+                link.setAttribute('href', 'http://' + link.getAttribute('href'))
+            }
+
+            window.open(link);
+
+            // код потрібен тільки для однулення лінки
+            const arr = link.getAttribute('href').split('').slice(7)
+            link.setAttribute('href', arr.join(''))
+        })
+    }
+    changeLinkHttp(btnHttp)
+
+    function changeLinkHttps(btn) {
+        btn.addEventListener('click', () => {
+            if (!link.getAttribute('href').includes('http')) {
+                link.setAttribute('href', 'https://' + link.getAttribute('href'))
+            }
+
+            window.open(link);
+
+            // код потрібен тільки для однулення лінки
+            const arr = link.getAttribute('href').split('').slice(8)
+            link.setAttribute('href', arr.join(''))
+        })
+    }
+    changeLinkHttps(btnHttps)
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 29</title>
+
+    <style>
+        .img-wrapper {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .img-wrapper div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 20px;
+        }
+
+        img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            margin: 1px 3px;
+            cursor: pointer;
+        }
+
+        span {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="img-wrapper"></div>
+
+
+<script>
+
+const imgArr = [
+    './img/1.png',
+    './img/2.png',
+    './img/3.png',
+    './img/4.png',
+    './img/5.png',
+]
+
+let imgWrapper = document.querySelector('.img-wrapper');
+let images = imgArr.map(img => {
+    return`<div><img src='${img}'><span>0</span></div>`
+}).join('');
+
+imgWrapper.innerHTML = images
+
+const imgs = document.querySelectorAll('img')
+
+imgs.forEach(img => {
+    img.addEventListener('click', (el) => {
+        el = img.nextSibling.innerHTML
+        img.nextSibling.innerHTML = +el + 1
+    })
+})
+
+</script>
+
+</body>
+</html>
