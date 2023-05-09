@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 25</title>
+</head>
+<body>
+
+<input type="text" class="input">
+<div class="hidden" style="display: none">Enter the text</div>
+
+
+<script>
+
+    const textField = document.querySelector('.input')
+    const hiddenDiv = document.querySelector('.hidden')
+
+    textField.addEventListener('focusin', () => {
+        hiddenDiv.style.display = 'block'
+    })
+    textField.addEventListener('focusout', () => {
+        hiddenDiv.style.display = 'none'
+    })
+
+</script>
+
+</body>
+</html>

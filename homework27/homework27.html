@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 27</title>
+
+    <style>
+        .img-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        img {
+            width: 100%;
+            aspect-ratio: 1 / 0.7;
+            object-fit: cover;
+            margin: 1px 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="img-wrapper"></div>
+
+
+<script>
+
+const imgArr = [
+    './img/1.jpeg',
+    './img/2.jpeg',
+    './img/3.jpeg',
+    './img/4.jpeg',
+    './img/5.jpeg',
+    './img/6.jpeg',
+    './img/7.jpeg',
+    './img/8.jpeg',
+    './img/9.jpeg',
+]
+
+const shuffle = (arr) => {
+    return arr.sort(() => Math.random() - 0.5)
+}
+shuffle(imgArr)
+
+let imgWrapper = document.querySelector('.img-wrapper');
+let images = imgArr.map(img => {
+    return`<img src='${img}'>`
+}).join('');
+
+imgWrapper.innerHTML = images
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 26</title>
+
+    <style>
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="table-wrapper"></div>
+
+
+<script>
+
+    function addTable() {
+        const wrapper = document.querySelector('.table-wrapper');
+
+        for (let i = 1; i <= 100; i++) {
+            const element = document.createElement('span');
+            const content = document.createTextNode(i);
+            element.appendChild(content)
+
+            wrapper.appendChild(element)
+
+            if (i % 10 === 0) {
+                const br = document.createElement('br');
+                wrapper.appendChild(br)
+            }
+        }
+    }
+    addTable()
+
+</script>
+
+</body>
+</html>
