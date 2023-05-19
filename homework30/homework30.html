@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 30</title>
+
+    <style>
+        .wrapper {
+            max-width: 310px;
+            margin: 50px auto 0;
+        }
+
+        form {
+            display: none;
+            flex-direction: column;
+            max-width: 100%;
+            row-gap: 20px;
+        }
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        input, select, textarea {
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+            height: 45px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">  
+    <button class="btn buy">Купити</button>
+
+    <form action="" class="form">
+        <fieldset>
+            <span>*ПІБ:</span>
+            <input type="text" id="name" class="required">
+        </fieldset>
+
+        <fieldset>
+            *Місто:
+            <select name="" id="city" class="required">
+                <option value=""></option>
+                <option value="Київ">Київ</option>
+                <option value="Львів">Львів</option>
+                <option value="Рівне">Рівне</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            *Склад нової пошти:
+            <select name="" id="np" class="required">
+                <option value=""></option>
+                <option value="№ 1">№ 1</option>
+                <option value="№ 2">№ 2</option>
+                <option value="№ 3">№ 3</option>
+            </select>
+        </fieldset>
+
+        <label for="">
+            *Кількість:
+            <input type="number" value="0" id="amount" class="required" style="width: 20%;">
+        </label>
+
+        <label for="postpaid">
+            <input type="radio" id="postpaid" class="payment" name="payment" value="Післяплата" checked>
+            Післяплата
+        </label>
+        <label for="card-payments">
+            <input type="radio" id="card-payments" class="payment" name="payment" value="Оплата банківською карткою">
+            Оплата банківською карткою
+        </label>
+
+        <textarea name="" id="comment" placeholder="Коментар"></textarea>
+
+        <button class="btn order">Зберегти</button>
+    </form>
+
+    <div class="information"></div>
+</div>
+
+
+<script>
+
+    let form = document.querySelector('.form')
+    let order = document.querySelector('.order')
+    let buy = document.querySelector('.buy')
+    let information = document.querySelector('.information')
+
+    buy.addEventListener('click', (event) => {
+        event.preventDefault()
+        form.style.display = 'flex'
+        buy.style.display = 'none'
+    })
+
+    order.addEventListener('click', (event) => {
+        event.preventDefault()
+
+        let name = document.querySelector('#name').value,
+            city = document.querySelector('#city').value,
+            np = document.querySelector('#np').value,
+            payment = document.querySelectorAll('.payment'),
+            amount = document.querySelector('#amount').value
+            comment = document.querySelector('#comment').value
+
+        payment.forEach((i) => {
+            if (i.checked) {
+                payment = i.value
+            }
+        })
+            
+        if (name && city && np && amount != 0) {
+            form.style.display = 'none'
+            
+            information.innerHTML = `
+                ПІБ: ${name}<br>
+                Місто: ${city}<br>
+                Відділення НП: ${np}<br>
+                Кількість: ${amount}<br>
+                Спосіб оплати: ${payment}<br>
+                ${comment}
+            `
+        } else {
+            document.querySelectorAll('.required').forEach((item) => {
+                item.value == 0 ? item.style.borderColor = 'red' : item.style.borderColor = '#ccc'
+            })
+        }
+    })
+
+</script>
+
+</body>
+</html>

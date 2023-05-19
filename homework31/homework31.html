@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 31</title>
+
+    <style>
+        .wrapper {
+            max-width: 250px;
+            margin: 50px auto 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            row-gap: 20px;
+        }
+
+        textarea {
+            resize: none;
+            height: 45px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <form action="" class="form">
+        <input type="text" id="name" placeholder="Ім'я" class="required">
+        <input type="text" id="surname" placeholder="Прізвище" class="required">
+        <input type="text" id="birthday" placeholder="Дата народження">
+
+        <label for="male"><input type="radio" id="male" class="gender" name="gender" value="Чоловік" checked>Чоловік</label>
+        <label for="female"><input type="radio" id="female" class="gender" name="gender" value="Жінка">Жінка</label>
+
+        <select name="" id="city" class="required">
+            <option value=""></option>
+            <option value="Київ">Київ</option>
+            <option value="Львів">Львів</option>
+            <option value="Рівне">Рівне</option>
+        </select>
+
+        <textarea name="" id="address" placeholder="Адреса"></textarea>
+
+        <label for="ukr"><input type="checkbox" class="language" id="ukr" value="Українска">Українска</label>
+        <label for="en"><input type="checkbox" class="language" id="en" value="Англійська">Англійська</label>
+        <label for="de"><input type="checkbox" class="language" id="de" value="Німецька">Німецька</label>
+
+        <button class="btn">Зберегти</button>
+    </form>
+
+    <div class="information"></div>
+</div>
+
+
+<script>
+
+    let form = document.querySelector('.form')
+    let btn = document.querySelector('.btn')
+    let information = document.querySelector('.information')
+
+    btn.addEventListener('click', (event) => {
+        event.preventDefault()
+
+        let name = document.querySelector('#name').value,
+            surname = document.querySelector('#surname').value,
+            birthday = document.querySelector('#birthday').value,
+            gender = document.querySelectorAll('.gender'),
+            city = document.querySelector('#city').value,
+            address = document.querySelector('#address').value,
+            language = document.querySelectorAll('.language'),
+            languages = []
+
+
+        gender.forEach((i) => {
+            if (i.checked) {
+                gender = i.value
+            }
+        })
+
+        language.forEach((i) => {
+            if (i.checked) {
+                languages.push(i.value)
+            }
+        })
+
+        languages = languages.join(', ')
+
+        if (name && surname && city != 0) {
+            form.style.display = 'none'
+
+            information.innerHTML = `
+                ${name} ${surname}<br>
+                ${birthday}<br>
+                ${gender}<br>
+                ${city}<br>
+                ${address}<br>
+                ${languages}
+            `
+        } else {
+            document.querySelectorAll('.required').forEach((item) => {
+                item.value == 0 ? item.style.borderColor = 'red' : item.style.borderColor = '#ccc'
+            })
+        }
+    })
+
+</script>
+
+</body>
+</html>
