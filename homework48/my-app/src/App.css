@@ -1,0 +1,26 @@
+.App-header {
+	display: flex;
+	justify-content: space-between;
+	background-color: #515151;
+	padding-right: 20px;
+}
+
+.App-logo {
+    width: 100px;
+}
+
+.App-menu {
+	display: flex;
+	align-items: center;
+	color: #fff;
+	list-style: none;
+}
+
+.App-menu li {
+	padding: 0 15px;
+	cursor: pointer;
+}
+
+.wrapper {
+	display: flex;
+}
