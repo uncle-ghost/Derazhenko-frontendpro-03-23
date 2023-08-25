@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 32</title>
+
+    <style>
+        .wrapper {
+            margin: 50px;
+        }
+
+        .products,
+        .information {
+            display: flex;
+            justify-content: center;
+            gap: 50px
+        }
+
+        .products.hidden {
+            display: none;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+        }
+
+        .buy {
+            width: 100px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 10px;
+            border: none;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .buy.green {
+            background-color: green;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <button class="order">Мої замовлення</button>
+
+    <div class="products"></div>
+    
+    <div class="information"></div>
+</div>
+
+<script src="localstorage.js"></script>
+
+</body>
+</html>
