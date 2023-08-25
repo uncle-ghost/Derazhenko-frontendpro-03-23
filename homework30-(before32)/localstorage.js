@@ -23,7 +23,7 @@ let productsWrapper = document.querySelector('.products');
 let products
 
 products = catalog.map((item, id) => {
-	return`
+	return `
 		<div class="product">
 			<img src="${item.img}" alt="">
 			<h3 class="name">${item.name}</h3>
@@ -44,12 +44,12 @@ function addProduct(el, id) {
 let order = document.querySelector('.order')
 let information = document.querySelector('.information')
 
-order.addEventListener('click', function() {
+order.addEventListener('click', function () {
 	productsWrapper.classList.add('hidden')
-	
+
 	let addedProducts = JSON.parse(localStorage.getItem('catalog'))
 	orderProducts = addedProducts.map((item, id) => {
-		return`
+		return `
 			<div class="product">
 				<img src="${catalog[item].img}" alt="">
 				<h3 class="name">${catalog[item].name}</h3>
@@ -68,7 +68,7 @@ function removeProduct(item, id) {
 
 	let addedProducts = JSON.parse(localStorage.getItem('catalog'))
 	orderProducts = addedProducts.map((item, id) => {
-		return`
+		return `
 			<div class="product">
 				<img src="${catalog[item].img}" alt="">
 				<h3 class="name">${catalog[item].name}</h3>
